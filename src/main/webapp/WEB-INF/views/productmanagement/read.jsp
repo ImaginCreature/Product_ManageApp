@@ -48,35 +48,27 @@
                     </div>
                     <div class="card-body">
                         <div class="input-group mb-3">
-                            <span class="input-group-text">TNO</span>
-                            <input type="text" name="tno" class="form-control"
-                                   value=<c:out value="${dto.tno}"></c:out> readonly>
+                            <span class="input-group-text">PNO</span>
+                            <input type="number" name="pno" class="form-control"
+                                   value=<c:out value="${dto.pno}"></c:out> readonly>
                         </div>
                         <div class="input-group mb-3">
-                            <span class="input-group-text">Title</span>
-                            <input type="text" name="title" class="form-control"
-                                   value='<c:out value="${dto.title}"></c:out>' readonly>
+                            <span class="input-group-text">Name</span>
+                            <input type="text" name="name" class="form-control"
+                                   value='<c:out value="${dto.name}"></c:out>' readonly>
                         </div>
 
                         <div class="input-group mb-3">
-                            <span class="input-group-text">DueDate</span>
-                            <input type="date" name="dueDate" class="form-control"
-                                   value=<c:out value="${dto.dueDate}"></c:out> readonly>
+                            <span class="input-group-text">Price</span>
+                            <input type="number" name="price" class="form-control"
+                                   value=<c:out value="${dto.price}"></c:out> readonly>
 
                         </div>
 
                         <div class="input-group mb-3">
                             <span class="input-group-text">Writer</span>
-                            <input type="text" name="writer" class="form-control"
-                                   value=<c:out value="${dto.writer}"></c:out> readonly>
-
-                        </div>
-
-                        <div class="form-check">
-                            <label class="form-check-label" >
-                                Finished &nbsp;
-                            </label>
-                            <input class="form-check-input" type="checkbox" name="finished" ${dto.finished?"checked":""} disabled >
+                            <input type="number" name="quantity" class="form-control"
+                                   value=<c:out value="${dto.quantity}"></c:out> readonly>
                         </div>
 
                         <div class="my-4">
@@ -87,27 +79,17 @@
                         </div>
 
                         <script>
-                   /*         document.querySelector(".btn-primary").addEventListener("click", function(e){
-                                self.location = "/todo/modify?tno="+${dto.tno}
-                            },false)*/
-
 
                             document.querySelector(".btn-primary").addEventListener("click", function(e){
 
-                                self.location = `/todo/modify?tno=${dto.tno}&${pageRequestDTO.link}`
+                                self.location = `/productmanagement/modify?pno=${dto.pno}&${pageRequestDTO.link}`
 
                             },false)
-
-
-
-                        /*    document.querySelector(".btn-secondary").addEventListener("click", function(e){
-                                self.location = "/todo/list";
-                            },false)*/
 
                             //목록 페이지로 이동하는 이벤트 처리
                             document.querySelector(".btn-secondary").addEventListener("click", function(e){
 
-                                self.location = "/todo/list?${pageRequestDTO.link}"
+                                self.location = "/productmanagement/list?${pageRequestDTO.link}"
 
                             },false)
 

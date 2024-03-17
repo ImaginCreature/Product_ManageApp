@@ -40,29 +40,21 @@
                 </nav>
             </div>
         </div>
-        <!-- header end -->
-        <!-- 기존의 <h1>Header</h1>끝 -->
+
         <div class="row content">
             <div class="col">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Search </h5>
-                        <form action="/todo/list" method="get">
+                        <form action="/productmanagement/list" method="get">
                             <input type="hidden" name="size" value="${pageRequestDTO.size}">
                             <div class="mb-3">
-                                <input type="checkbox" name="finished" ${pageRequestDTO.finished?"checked":""} >완료여부
-                            </div>
-                            <div class="mb-3">
                                 <input type="checkbox" name="types"
-                                       value="t" ${pageRequestDTO.checkType("t")?"checked":""}>제목
+                                       value="t" ${pageRequestDTO.checkType("t")?"checked":""}>상품 이름
                                 <input type="checkbox" name="types"
-                                       value="w"  ${pageRequestDTO.checkType("w")?"checked":""}>작성자
+                                       value="w"  ${pageRequestDTO.checkType("w")?"checked":""}>상품 가격
                                 <input type="text" name="keyword" class="form-control"
                                        value='<c:out value="${pageRequestDTO.keyword}"/>'>
-                            </div>
-                            <div class="input-group mb-3 dueDateDiv">
-                                <input type="date" name="from" class="form-control" value="${pageRequestDTO.from}">
-                                <input type="date" name="to" class="form-control" value="${pageRequestDTO.to}">
                             </div>
                             <div class="input-group mb-3">
                                 <div class="float-end">
@@ -83,30 +75,28 @@
                         Featured
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
+                        <h5 class="card-title">상품 관리 시스템</h5>
                         <table class="table">
                             <thead>
                             <tr>
-                                <th scope="col">Tno</th>
-                                <th scope="col">Title</th>
-                                <th scope="col">Writer</th>
-                                <th scope="col">DueDate</th>
-                                <th scope="col">Finished</th>
+                                <th scope="col">Pno</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
                             </tr>
                             </thead>
                             <tbody>
                             <c:forEach items="${responseDTO.dtoList}" var="dto">
                                 <tr>
-                                    <th scope="row"><c:out value="${dto.tno}"/></th>
+                                    <th scope="row"><c:out value="${dto.pno}"/></th>
                                     <td>
-                                        <a href="/todo/read?tno=${dto.tno}&${pageRequestDTO.link}"
-                                           class="text-decoration-none" data-tno="${dto.tno}">
-                                            <c:out value="${dto.title}"/>
+                                        <a href="/productmanagement/read?pno=${dto.pno}&${pageRequestDTO.link}"
+                                           class="text-decoration-none" data-tno="${dto.pno}">
+                                            <c:out value="${dto.name}"/>
                                         </a>
                                     </td>
-                                    <td><c:out value="${dto.writer}"/></td>
-                                    <td><c:out value="${dto.dueDate}"/></td>
-                                    <td><c:out value="${dto.finished}"/></td>
+                                    <td><c:out value="${dto.price}"/></td>
+                                    <td><c:out value="${dto.quantity}"/></td>
                                 </tr>
                             </c:forEach>
 
@@ -147,7 +137,7 @@
                                     return
                                 }
                                 const num = target.getAttribute("data-num")
-                                self.location = `/todo/list?page=\${num}`
+                                self.location = `/productmanagement/list?page=\${num}`
 
                                 const form = document.querySelector("form")
                                 form.innerHTML += `<input tpe='hidden' name='page' value='\${num}'>`

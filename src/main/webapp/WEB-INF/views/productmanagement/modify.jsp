@@ -44,39 +44,31 @@
             <div class="col">
                 <div class="card">
                     <div class="card-header">
-                        Todo Modify
+                        Prodct Modify
                     </div>
                     <div class="card-body">
-                        <form action="/todo/modify" method="post">
+                        <form action="/productmanagement/modify" method="post">
                             <div class="input-group mb-3">
-                                <span class="input-group-text">TNO</span>
-                                <input type="text" name="tno" class="form-control"
-                                       value=<c:out value="${dto.tno}"></c:out> readonly>
+                                <span class="input-group-text">PNO</span>
+                                <input type="text" name="pno" class="form-control"
+                                       value=<c:out value="${dto.pno}"></c:out> readonly>
                             </div>
                             <div class="input-group mb-3">
-                                <span class="input-group-text">Title</span>
-                                <input type="text" name="title" class="form-control"
-                                       value=<c:out value="${dto.title}"></c:out> >
-                            </div>
-
-                            <div class="input-group mb-3">
-                                <span class="input-group-text">DueDate</span>
-                                <input type="date" name="dueDate" class="form-control"
-                                       value=<c:out value="${dto.dueDate}"></c:out> >
+                                <span class="input-group-text">Name</span>
+                                <input type="text" name="name" class="form-control"
+                                       value=<c:out value="${dto.name}"></c:out> >
                             </div>
 
                             <div class="input-group mb-3">
-                                <span class="input-group-text">Writer</span>
-                                <input type="text" name="writer" class="form-control"
-                                       value=<c:out value="${dto.writer}"></c:out> readonly>
-
+                                <span class="input-group-text">Price</span>
+                                <input type="number" name="price" class="form-control"
+                                       value=<c:out value="${dto.price}"></c:out> >
                             </div>
 
-                            <div class="form-check">
-                                <label class="form-check-label" >
-                                    Finished &nbsp;
-                                </label>
-                                <input class="form-check-input" type="checkbox" name="finished" ${dto.finished?"checked":""} >
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">Quantity</span>
+                                <input type="number" name="quantity" class="form-control"
+                                       value=<c:out value="${dto.quantity}"></c:out>>
                             </div>
 
                             <div class="my-4">
@@ -106,24 +98,12 @@
 
                         const formObj = document.querySelector("form")
 
-                        // document.querySelector(".btn-danger").addEventListener("click",function(e) {
-                        //
-                        //     e.preventDefault()
-                        //     e.stopPropagation()
-                        //
-                        //     formObj.action ="/todo/remove"
-                        //     formObj.method ="post"
-                        //
-                        //     formObj.submit()
-                        //
-                        // },false);
-
                         document.querySelector(".btn-danger").addEventListener("click",function(e) {
 
                             e.preventDefault()
                             e.stopPropagation()
 
-                            formObj.action =`/todo/remove?${pageRequestDTO.link}`
+                            formObj.action =`/productmanagement/remove?${pageRequestDTO.link}`
                             formObj.method ="post"
 
                             formObj.submit()
@@ -136,28 +116,19 @@
                             e.preventDefault()
                             e.stopPropagation()
 
-                            formObj.action ="/todo/modify"
+                            formObj.action ="/productmanagement/modify"
                             formObj.method ="post"
 
                             formObj.submit()
 
                         },false);
 
-                        /*document.querySelector(".btn-secondary").addEventListener("click",function(e) {
-
-                            e.preventDefault()
-                            e.stopPropagation()
-
-                            self.location = "/todo/list";
-
-                        },false);*/
-
                         document.querySelector(".btn-secondary").addEventListener("click",function(e) {
 
                             e.preventDefault()
                             e.stopPropagation()
 
-                            self.location= `/todo/list?${pageRequestDTO.link}`
+                            self.location= `/productmanagement/list?${pageRequestDTO.link}`
 
                         },false);
 

@@ -1,13 +1,13 @@
-package com.ssg.productmanagement;
+package com.ssg.productmanagement.config;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration  // 해당 클래스가 스프링 빈에 대한 설정을(@Configuration) 한 클래스임을 명시
+@Configuration
 public class ModelMapperConfig {
-    @Bean   // 해당 메서드의 실행 결과로 반환된 객체를 스프링의 빈으로 등록시키는 역할
+    @Bean
     public ModelMapper getMapper() {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration()

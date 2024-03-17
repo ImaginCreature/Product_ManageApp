@@ -1,4 +1,4 @@
-package com.ssg.productmanagement.config.dto;
+package com.ssg.productmanagement.dto;
 
 import lombok.Builder;
 import lombok.Getter;

@@ -1,13 +1,10 @@
-package com.ssg.productmanagement.config.service;
+package com.ssg.productmanagement.service;
 
-import com.ssg.productmanagement.config.domain.ProductVO;
-import com.ssg.productmanagement.config.dto.ProductDTO;
-import com.ssg.productmanagement.config.mapper.ProductManagementMapper;
-import com.ssg.todomvc.domain.TodoVO;
-import com.ssg.todomvc.dto.PageRequestDTO;
-import com.ssg.todomvc.dto.PageResponseDTO;
-import com.ssg.todomvc.dto.TodoDTO;
-import com.ssg.todomvc.mapper.TodoMapper;
+import com.ssg.productmanagement.domain.ProductVO;
+import com.ssg.productmanagement.dto.ProductDTO;
+import com.ssg.productmanagement.mapper.ProductManagementMapper;
+import com.ssg.productmanagement.dto.PageRequestDTO;
+import com.ssg.productmanagement.dto.PageResponseDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
@@ -31,32 +28,32 @@ public class ProductManagementServiceImpl implements ProductManagementService {
     }
 
     @Override
-    public TodoDTO getOne(Long tno) {
-        TodoVO todoVO = todoMapper.selectOne(tno);
-        TodoDTO todoDTO = modelMapper.map(todoVO, TodoDTO.class);
-        return todoDTO;
+    public ProductDTO getOne(Long pno) {
+        ProductVO productVO = productManagementMapper.selectOne(pno);
+        ProductDTO productDTO = modelMapper.map(productVO, ProductDTO.class);
+        return productDTO;
     }
 
     @Override
-    public void remove(Long tno) {
-        todoMapper.delete(tno);
+    public void remove(Long pno) {
+        productManagementMapper.delete(pno);
     }
 
     @Override
-    public void modify(TodoDTO todoDTO) {
-        TodoVO todoVO = modelMapper.map(todoDTO, TodoVO.class);
-        todoMapper.update(todoVO);
+    public void modify(ProductDTO productDTO) {
+        ProductVO productVO = modelMapper.map(productDTO, ProductVO.class);
+        productManagementMapper.update(productVO);
     }
 
     @Override
-    public PageResponseDTO<TodoDTO> getList(PageRequestDTO pageRequestDTO) {
-        List<TodoVO> vos = todoMapper.selectList(pageRequestDTO);
-        List<TodoDTO> dtos = vos.stream()
-                .map(vo -> modelMapper.map(vo, TodoDTO.class))
+    public PageResponseDTO<ProductDTO> getList(PageRequestDTO pageRequestDTO) {
+        List<ProductVO> vos = productManagementMapper.selectList(pageRequestDTO);
+        List<ProductDTO> dtos = vos.stream()
+                .map(vo -> modelMapper.map(vo, ProductDTO.class))
                 .toList();
-        int total = todoMapper.getCount(pageRequestDTO);
+        int total = productManagementMapper.getCount(pageRequestDTO);
 
-        PageResponseDTO<TodoDTO> pageResponseDTO = PageResponseDTO.<TodoDTO>All()
+        PageResponseDTO<ProductDTO> pageResponseDTO = PageResponseDTO.<ProductDTO>All()
                 .dtoList(dtos)
                 .total(total)
                 .pageRequestDTO(pageRequestDTO)

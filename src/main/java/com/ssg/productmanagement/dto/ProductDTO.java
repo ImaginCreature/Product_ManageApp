@@ -1,4 +1,4 @@
-package com.ssg.productmanagement.config.dto;
+package com.ssg.productmanagement.dto;
 
 import lombok.*;
 
@@ -12,12 +12,9 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductDTO {
-    private Long tno;
+    private Long pno;
     @NotEmpty
-    private String title;
-    @Future
-    private LocalDate dueDate;
-    private boolean finished;
-    @NotEmpty
-    private String writer;
+    private String name;
+    private Long price;
+    private int quantity;
 }

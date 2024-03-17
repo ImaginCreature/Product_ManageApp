@@ -1,18 +1,18 @@
-package com.ssg.productmanagement.config.mapper;
+package com.ssg.productmanagement.mapper;
 
-import com.ssg.todomvc.domain.TodoVO;
-import com.ssg.todomvc.dto.PageRequestDTO;
+import com.ssg.productmanagement.domain.ProductVO;
+import com.ssg.productmanagement.dto.PageRequestDTO;
 
 import java.util.List;
 
 public interface ProductManagementMapper {
     String getTime();
-    void insert(TodoVO todoVO);
-    List<TodoVO> selectAll();
-    TodoVO selectOne(Long tno);
-    void delete(Long tno);
-    void update(TodoVO todoVO);
+    void insert(ProductVO productVO);
+    List<ProductVO> selectAll();
+    ProductVO selectOne(Long pno);
+    void delete(Long pno);
+    void update(ProductVO productVO);
     int getCount(PageRequestDTO pageRequestDTO);
-    List<TodoVO> selectList(PageRequestDTO pageRequestDTO);
+    List<ProductVO> selectList(PageRequestDTO pageRequestDTO);
 
 }

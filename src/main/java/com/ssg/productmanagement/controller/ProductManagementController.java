@@ -1,8 +1,8 @@
-package com.ssg.productmanagement.config.controller;
+package com.ssg.productmanagement.controller;
 
-import com.ssg.todomvc.dto.PageRequestDTO;
-import com.ssg.todomvc.dto.TodoDTO;
-import com.ssg.todomvc.service.TodoService;
+import com.ssg.productmanagement.dto.ProductDTO;
+import com.ssg.productmanagement.service.ProductManagementService;
+import com.ssg.productmanagement.dto.PageRequestDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
@@ -16,75 +16,72 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/todo")
+@RequestMapping("/productmanagement")
 @Log4j2
 @RequiredArgsConstructor
 public class ProductManagementController {
-    private final TodoService todoService;
+    private final ProductManagementService productManagementService;
 
     @RequestMapping("/list")
     public void list(@Valid PageRequestDTO pageRequestDTO, BindingResult bindingResult, Model model) {
-        log.info("todo list.........");
+        log.info("product management list.........");
 
         if(bindingResult.hasErrors()) {
             pageRequestDTO = PageRequestDTO.builder().build();
         }
 
-       // model.addAttribute("dtoList", todoService.getAll());
-       model.addAttribute("responseDTO", todoService.getList(pageRequestDTO));
+       model.addAttribute("responseDTO", productManagementService.getList(pageRequestDTO));
     }
 
-    //@RequestMapping(value="/register", method= RequestMethod.GET)
     @GetMapping("/register")
     public void register() {
-        log.info("todo register get.......");
+        log.info("product management register get.......");
     }
 
     @PostMapping("/register")
-    public String registerPost(@Valid TodoDTO todoDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-        log.info("todo register post......");
+    public String registerPost(@Valid ProductDTO productDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        log.info("product management register post......");
 
         if(bindingResult.hasErrors()) {
             log.info("has errors....");
             redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
-            return "redirect:/todo/register";
+            return "redirect:/productmanagement/register";
         }
 
-        log.info(todoDTO);
-        // request "register" to service
-        todoService.register(todoDTO);
+        log.info(productDTO);
+        productManagementService.register(productDTO);
 
-        return "redirect:/todo/list";
+        return "redirect:/productmanagement/list";
     }
 
     @GetMapping({"/read", "/modify"})
-    public void read(Long tno, PageRequestDTO pageRequestDTO, Model model) {
-        TodoDTO todoDTO = todoService.getOne(tno);
-        log.info(todoDTO);
+    public void read(Long pno, PageRequestDTO pageRequestDTO, Model model) {
+        ProductDTO productDTO = productManagementService.getOne(pno);
+        log.info(productDTO);
 
-        model.addAttribute("dto", todoDTO);
+        model.addAttribute("dto", productDTO);
     }
 
     @PostMapping("/remove")
-    public String remove(Long tno, RedirectAttributes redirectAttributes) {
+    public String remove(Long pno, RedirectAttributes redirectAttributes) {
         log.info("---------remove-----------");
-        log.info("tno: " + tno);
-        todoService.remove(tno);
+        log.info("pno: " + pno);
+        productManagementService.remove(pno);
 
-        return "redirect:/todo/list";
+        return "redirect:/productmanagement/list";
     }
 
     @PostMapping("/modify")
-    public String modify(@Valid TodoDTO todoDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+    public String modify(@Valid ProductDTO productDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if(bindingResult.hasErrors()) {
             log.info("has errors....");
             redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
-            redirectAttributes.addFlashAttribute("dto", todoDTO.getTno());
-            return "redirect:/todo/modify";
+            redirectAttributes.addFlashAttribute("dto", productDTO.getPno());
+            return "redirect:/productmanagement/modify";
         }
-        log.info(todoDTO);
-        todoService.modify(todoDTO);
-        return "redirect:/todo/list";
+        log.info(productDTO);
+        productManagementService.modify(productDTO);
+        return "redirect:/productmanagement/list";
     }
 
 }

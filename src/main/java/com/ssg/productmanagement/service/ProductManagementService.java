@@ -1,14 +1,13 @@
-package com.ssg.productmanagement.config.service;
+package com.ssg.productmanagement.service;
 
-import com.ssg.todomvc.dto.PageRequestDTO;
-import com.ssg.todomvc.dto.PageResponseDTO;
-import com.ssg.todomvc.dto.TodoDTO;
+import com.ssg.productmanagement.dto.ProductDTO;
+import com.ssg.productmanagement.dto.PageRequestDTO;
+import com.ssg.productmanagement.dto.PageResponseDTO;
 
 public interface ProductManagementService {
-    void register(TodoDTO todoDTO);
-    // List<TodoDTO> getAll();
-    TodoDTO getOne(Long tno);
-    void remove(Long tno);
-    void modify(TodoDTO todoDTO);
-    PageResponseDTO<TodoDTO> getList(PageRequestDTO pageRequestDTO);
+    void register(ProductDTO productDTO);
+    ProductDTO getOne(Long pno);
+    void remove(Long pno);
+    void modify(ProductDTO productDTO);
+    PageResponseDTO<ProductDTO> getList(PageRequestDTO pageRequestDTO);
 }

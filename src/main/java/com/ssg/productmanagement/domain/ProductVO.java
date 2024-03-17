@@ -1,4 +1,4 @@
-package com.ssg.productmanagement.config.domain;
+package com.ssg.productmanagement.domain;
 
 import lombok.*;
 
@@ -7,12 +7,11 @@ import java.time.LocalDate;
 @Getter
 @Builder
 @ToString
-@AllArgsConstructor // 모든 필드를 파라미터로 받는 생성자
-@NoArgsConstructor // 기본 생성자
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProductVO {
-    private Long tno;
-    private String title;
-    private LocalDate dueDate;
-    private String writer;
-    private boolean finished;
+    private Long pno;
+    private String name;
+    private Long price;
+    private int quantity;
 }

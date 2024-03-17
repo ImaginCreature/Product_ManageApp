@@ -1,84 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ssg.todomvc.mapper.TodoMapper">
+<mapper namespace="com.ssg.productmanagement.mapper.ProductManagementMapper">
     <select id="getTime" resultType="string">
         select now()
     </select>
 
     <insert id="insert">
-        insert into tbl_todo (title, dueDate, writer) values (#{title}, #{dueDate}, #{writer})
+        insert into tbl_product_management (name, price, quantity) values (#{name}, #{price}, #{quantity})
     </insert>
 
-    <select id="selectAll" resultType="com.ssg.todomvc.domain.TodoVO">
-        select * from tbl_todo order by tno desc
+    <select id="selectAll" resultType="com.ssg.productmanagement.domain.ProductVO">
+        select * from tbl_product_management order by pno desc
     </select>
 
-    <select id="selectOne" resultType="com.ssg.todomvc.domain.TodoVO">
+    <select id="selectOne" resultType="com.ssg.productmanagement.domain.ProductVO">
         select *
-        from tbl_todo
-        where tno = #{tno}
+        from tbl_product_management
+        where pno = #{pno}
     </select>
 
     <delete id="delete">
-        delete from tbl_todo where tno= #{tno}
+        delete from tbl_product_management where pno= #{pno}
     </delete>
 
     <update id="update">
-        update tbl_todo set title = #{title}, dueDate = #{dueDate}, finished = #{finished} where tno = #{tno}
+        update tbl_product_management set name = #{name}, price = #{price}, quantity = #{quantity} where pno = #{pno}
     </update>
 
-    <select id="selectList" resultType="com.ssg.todomvc.domain.TodoVO">
-        select * from tbl_todo
+    <select id="selectList" resultType="com.ssg.productmanagement.domain.ProductVO">
+        select * from tbl_product_management
         <where>
             <if test="types != null and types.length > 0">
                 <foreach collection="types" item="type" open="(" close=")" separator="OR">
                     <if test="type=='t'.toString()">
-                        title like concat('%', #{keyword}, '%')
+                        name like concat('%', #{keyword}, '%')
                     </if>
                     <if test="type=='w'.toString()">
-                        writer like concat('%', #{keyword}, '%')
+                        price like concat('%', #{keyword}, '%')
                     </if>
                 </foreach>
             </if>
-
-            <if test="finished">
-                <trim prefix="and">
-                    finished=1
-                </trim>
-            </if>
-
-            <if test="from != null and to != null">
-                <trim prefix="and">
-                    dueDate between #{from} and #{to}
-                </trim>
-            </if>
         </where>
-        order by tno desc limit #{skip}, #{size}
+        order by pno desc limit #{skip}, #{size}
     </select>
 
     <select id="getCount" resultType="int">
         select count(*)
-        from tbl_todo
+        from tbl_product_management
         <where>
             <if test="types != null and types.length > 0">
                 <foreach collection="types" item="type" open="(" close=") " separator=" OR ">
                     <if test="type == 't'.toString()">
-                        title like concat('%', #{keyword}, '%')
+                        name like concat('%', #{keyword}, '%')
                     </if>
                     <if test="type == 'w'.toString()">
-                        writer like concat('%', #{keyword}, '%')
+                        price like concat('%', #{keyword}, '%')
                     </if>
                 </foreach>
-            </if>
-            <if test="finished">
-                <trim prefix="and">
-                    finished = 1
-                </trim>
-            </if>
-            <if test="from != null and to != null">
-                <trim prefix="and">
-                    dueDate between #{from} and #{to}
-                </trim>
             </if>
         </where>
     </select>

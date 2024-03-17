@@ -1,4 +1,4 @@
-package com.ssg.productmanagement.config.controller.exception;
+package com.ssg.productmanagement.controller.exception;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
@@ -13,17 +13,6 @@ import java.util.Arrays;
 @ControllerAdvice
 @Log4j2
 public class CommonExceptionAdvice {
-    /*
-    @ResponseBody
-    @ExceptionHandler(NumberFormatException.class)
-    public String exceptionNumber(NumberFormatException numberFormatException) {
-        log.info("=================================");
-        log.error(numberFormatException.getMessage());
-        return "NUMBER FORMAT EXCEPTION";
-    }
-    */
-
-    // 배포할 때는 responseBody 로 출력하는게 부담되기 때문에 error page 를 따로 걷어낸다.
     @ResponseBody
     @ExceptionHandler(Exception.class)
     public String exceptionCommon(Exception exception) {

@@ -47,20 +47,20 @@
                         Featured
                     </div>
                     <div class="card-body">
-                        <form action="/todo/register" method="post">
+                        <form action="/productmanagement/register" method="post">
                             <div class="input-group mb-3">
-                                <span class="input-group-text">Title</span>
-                                <input type="text" name="title" class="form-control" placeholder="Title">
+                                <span class="input-group-text">Name</span>
+                                <input type="text" name="name" class="form-control" placeholder="Name">
                             </div>
 
                             <div class="input-group mb-3">
-                                <span class="input-group-text">DueDate</span>
-                                <input type="date" name="dueDate" class="form-control" placeholder="Writer">
+                                <span class="input-group-text">Price</span>
+                                <input type="number" name="price" class="form-control" placeholder="Price">
                             </div>
 
                             <div class="input-group mb-3">
-                                <span class="input-group-text">Writer</span>
-                                <input type="text" name="writer" class="form-control" placeholder="Writer">
+                                <span class="input-group-text">Quantity</span>
+                                <input type="number" name="quantity" class="form-control" placeholder="Quantity">
                             </div>
 
                             <div class="my-4">

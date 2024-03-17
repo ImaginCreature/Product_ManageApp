@@ -1,4 +1,4 @@
-package com.ssg.productmanagement.config.controller.formatter;
+package com.ssg.productmanagement.controller.formatter;
 
 import org.springframework.format.Formatter;
 

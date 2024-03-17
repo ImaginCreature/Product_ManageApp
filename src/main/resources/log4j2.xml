@@ -15,7 +15,7 @@
             <AppenderRef ref="Console" />
         </Logger>
 
-        <Logger name="com.ssg.todomvc.mapper" level="TRACE" additivity="false">
+        <Logger name="com.ssg.productmanagement.mapper" level="TRACE" additivity="false">
             <AppenderRef ref="console"/>
         </Logger>
 
