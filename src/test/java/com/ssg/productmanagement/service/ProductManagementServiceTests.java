@@ -55,7 +55,7 @@ public class ProductManagementServiceTests {
         log.info(responseDTO);
         responseDTO.getDtoList().stream().forEach(productDTO -> log.info(productDTO));
     }
-
+    /* service test 주석 1 */
 }
 
 
