@@ -63,4 +63,5 @@ public class ProductManagementMapperTests {
         List<ProductVO> voList = productManagementMapper.selectList(pageRequestDTO);
         voList.forEach(vo -> log.info(vo));
     }
+    /*mapper test 주석 1*/
 }
