@@ -65,4 +65,5 @@ public class ProductManagementMapperTests {
     }
     /*mapper test 주석 1*/
     /* mapper test 주석 2 */
+    /* mapper test 주석 3 */
 }
