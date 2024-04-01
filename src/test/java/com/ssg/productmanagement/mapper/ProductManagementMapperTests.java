@@ -64,4 +64,5 @@ public class ProductManagementMapperTests {
         voList.forEach(vo -> log.info(vo));
     }
     /*mapper test 주석 1*/
+    /* mapper test 주석 2 */
 }
